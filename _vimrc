@@ -28,6 +28,12 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'preservim/nerdcommenter'
+Plug 'https://github.com/octol/vim-cpp-enhanced-highlight'
+Plug 'vim-scripts/User-Defined-Type-Highlighter'
+Plug 'yegappan/taglist'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'kien/ctrlp.vim'
 syntax on
 " colorscheme elflord
 colorscheme badwolf
@@ -125,3 +131,20 @@ endif
 
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
+
+map <F8> :w <CR> :!g++ -std=c++17 "%" -o "%<" && "%<" <CR>
+
+" disable wrapping
+autocmd FileType text set textwidth=0
+
+set foldmethod=syntax
+set foldlevel=99
+
