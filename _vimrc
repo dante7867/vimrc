@@ -1,13 +1,19 @@
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 
+" for windows terminal
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[3 q"
+let &t_EI = "\<Esc>[2 q"
+
 set encoding=utf-8
 set splitbelow
 set number "line numbering
-set guifont=Fira_Code\ Regular:h11
+set guifont=Fira_Code\ Medium:h13
+set splitright
 
 set lcs+=space:·
-let g:indentLine_setColors = 0
+" let g:indentLine_setColors = 0
 
 set nobackup
 set noswapfile
@@ -15,7 +21,7 @@ set noundofile
 map <C-n> :NERDTreeToggle<CR>
 " DISPLAY IDENTATION
 map <C-i> :set invlist<CR>
-:imap jj <Esc>
+:imap jf <Esc>
 imap <C-BS> <C-W>
 " Plugins will be downloaded under the specified directory.
 call plug#begin('c:\Users\dante\Vim\plugged')
@@ -26,17 +32,20 @@ Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
-Plug 'ycm-core/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'preservim/nerdcommenter'
 Plug 'https://github.com/octol/vim-cpp-enhanced-highlight'
 Plug 'vim-scripts/User-Defined-Type-Highlighter'
 Plug 'yegappan/taglist'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
+
 syntax on
 " colorscheme elflord
 colorscheme badwolf
+" colorscheme codedark
 
 " Make the tab line darker than the background.
 let g:badwolf_tabline = 0
@@ -148,3 +157,5 @@ autocmd FileType text set textwidth=0
 set foldmethod=syntax
 set foldlevel=99
 
+nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
