@@ -24,7 +24,7 @@ map <C-i> :set invlist<CR>
 :imap jf <Esc>
 imap <C-BS> <C-W>
 " Plugins will be downloaded under the specified directory.
-call plug#begin('c:\Users\dante\Vim\plugged')
+call plug#begin('~/Vim/plugged')
 
 " Declare the list of plugins.
 Plug 'sjl/badwolf'
@@ -41,7 +41,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
-
+Plug 'tomasiser/vim-code-dark'
 syntax on
 " colorscheme elflord
 colorscheme badwolf
@@ -100,6 +100,7 @@ autocmd Filetype python imap <buffer> <F5> <esc>:w<CR>:ter python "%"<CR>
 autocmd Filetype python map <buffer> <F6> :w<CR>:vert ter python "%"<CR>
 autocmd Filetype python imap <buffer> <F6> <esc>:w<CR>:vert ter python "%"<CR>
 
+autocmd Filetype cpp  map <F5> :w <CR> :!g++ -std=c++17 "%" -o "%<" && "%<" <CR>
 
 " changing fonts 
 if has("unix")
@@ -149,7 +150,7 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
-map <F8> :w <CR> :!g++ -std=c++17 "%" -o "%<" && "%<" <CR>
+
 
 " disable wrapping
 autocmd FileType text set textwidth=0
@@ -159,3 +160,4 @@ set foldlevel=99
 
 nmap <leader>yfw <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>yfd <Plug>(YCMFindSymbolInDocument)
+
